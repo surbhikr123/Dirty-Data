@@ -1,0 +1,13 @@
+//In the command below reading the CSV file and cleaning white spaces
+s<- read.csv(file="C:/Users/Surbhikr89/Documents/dirty_data.csv", header = TRUE, strip.white=TRUE)
+
+//In the command below replacing special characters specific to this document
+s1<-data.frame(lapply(s, gsub, pattern = "Ì´|Ì|´", replacement = " "))
+
+//cleaning whitespaces
+install.packages("stringr", dependencies=TRUE)
+s2<- data.frame(lapply(s1, trimws))
+head(s2)
+
+//Exporting the Excel
+write.table(s2, "C:/Users/Surbhikr89/Documents/dirty_data2.csv", sep="")
